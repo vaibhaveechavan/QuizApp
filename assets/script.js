@@ -93,7 +93,25 @@ const submitBtn = document.getElementById("submit");
 let currentQuiz = 0;
 let score = 0;
 
+shuffle(quizData);
 loadQuiz();
+
+function shuffle(quizData) {
+    var ctr = quizData.length, temp, index;
+
+    // While there are elements in the array
+    while (ctr > 0) {
+        // Pick a random index
+        index = Math.floor(Math.random() * ctr);
+        // Decrease ctr by 1
+        ctr--;
+        // And swap the last element with it
+        temp = quizData[ctr];
+        quizData[ctr] = quizData[index];
+        quizData[index] = temp;
+    }
+    return quizData;
+}
 
 function loadQuiz() {
     deselectAnswers();
